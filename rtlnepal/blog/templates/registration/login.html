@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}"/>
+    <script src="{% static 'js/login.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+</head>
+<body>  
+    <div class="login">
+        <div class="login-header">
+            <h1>Login</h1>
+        </div>
+        <div class="login-form">
+            {% if form.errors %}
+                <h2>Incorrect Username or Password!</h2>
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                    <h3>Username:</h3>
+                    {{ form.username }}<br>
+                    <h3>Password:</h3>
+                    {{ form.password }}<br>
+                    <input type="submit" value="Login" class="login-button"/>
+                    <input type="hidden" name="next" value="{{ next }}">
+            </form>            
+        </div>
+    </div>
+</body>
+</html>
