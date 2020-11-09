@@ -7,10 +7,17 @@
         <form action="" method="post">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{ object }}"?</p>
-            <input class='btn btn-primary' type="submit" value="Confirm" />
+            <input class='btn btn-danger' type="submit" value="Confirm" />
+            <a class="btn btn-warning" href="{% url 'post_detail' pk=post.pk %}" role="button">Cancel</a>
         </form>
 
     </div>
 </section>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p><p>&nbsp;</p>
 
   {% endblock %}
