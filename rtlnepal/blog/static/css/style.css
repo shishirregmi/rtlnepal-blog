@@ -75,8 +75,9 @@ html{
 
 
 
-.text-bigger a:hover{
+.text-big a:hover{
     text-decoration: none;
+    color: black;
 }
 
 #footer {

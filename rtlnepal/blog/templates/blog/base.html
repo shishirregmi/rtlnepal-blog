@@ -20,8 +20,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    
 
     <title>Shishir Regmi</title>
 </head>
@@ -31,8 +31,7 @@
         <ul class="nav-list v-class-resp">
             <div class="logo big-logo"><a href="{% url 'post_list' %}">Shishir Regmi</a></div>
             <li><a href="{% url 'post_list' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="{% url 'about' %}">About Me</a></li>
         </ul>
         <div class="rightNav v-class-resp">
             {% if user.is_authenticated %}

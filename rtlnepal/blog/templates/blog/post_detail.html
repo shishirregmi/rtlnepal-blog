@@ -1,11 +1,14 @@
 {% extends "blog/base.html" %}
 
 {% block body_block %}
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <section class="section section-left" id="about">
     <div class="paras">
         <p class="sectionTag text-bigger">{{ post.title }}</p>
-        <p class="sectionSubTag text-smaller">
+        
+
+        <p class="sectionSubTag text-small">
             <i class="fa fa-user" aria-hidden="true">{{post.author}}</i>
             {% if post.published_date %}            
                 <i class="fa fa-calendar-o" aria-hidden="true">{{ post.published_date}}</i></p>
@@ -13,7 +16,10 @@
                 <i class="fa fa-calendar-times-o" aria-hidden="true">Unpublished</i></p>    
             {% endif %}            
         </p>
+        
         <img src="https://source.unsplash.com/1400x450/?Statistics,mean" alt="thumbnail" class="fakeimg" >
+
+
         <p class="sectionSubTag text-small">{{ post.text|safe }}</p> 
 
         {% if user.is_authenticated %}
@@ -47,6 +53,7 @@
     <div class="row">
       <div class="col-md-8">
         <h2 class="page-header">Comments</h2>
+        <a class="btn btn-primary btn-comment" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
           <section class="comment-list">
             
             {% for comment in post.comments.all %}
@@ -88,12 +95,16 @@
                 
                 {% endif %}
                 {% empty %}
-
+                    <h2>No Comments</h2>
             {% endfor %}
           </section>
       </div>
     </div>
   </div>
-
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p><p>&nbsp;</p>
 {% endblock %}
 

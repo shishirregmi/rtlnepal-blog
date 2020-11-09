@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -8,7 +9,8 @@ from django.urls import reverse
 class Post(models.Model):
     author = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    text = models.TextField()
+    text = RichTextField(blank=True, null=True)
+    #text = models.TextField()
     create_date = models.DateTimeField(default=timezone.now())
     published_date = models.DateTimeField(blank=True,null=True)
 
@@ -17,11 +19,11 @@ class Post(models.Model):
         self.save()
 
     def approve_comment(self):
-        return self.comments.filters(approved_comment = True)
+        return self.comments.filter(approve_comment = True)
 
     #should be named get_absolute_url
     def get_absolute_url(self):
-        return reverse("post_detail",kwarg={'pk':self.pk})
+        return reverse("post_detail",kwargs={'pk':self.pk})
 
     def __str__(self):
         return self.title
