@@ -16,14 +16,14 @@
 
 <section class="section">
     <div class="paras">
-      <p class="sectionTag text-big titles">My Blogs</p>
+      <p class="sectionTag text-big">My Blogs</p>
     </div>
 </section>
 
 {% for post in post_list %}
 <section class="section">
     <div class="paras">
-        <p class="text-big titles"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
+        <p class="text-big"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
         <img src="https://source.unsplash.com/1400x450/?motherboard,cpu" alt="thumbnail" class="fakeimg" >
         
         <p class="text-smaller">

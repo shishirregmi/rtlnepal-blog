@@ -8,12 +8,6 @@
         <p class="sectionTag text-bigger">{{ post.title }}</p>
         
 
-        
-        
-        <img src="{{ post.image.url }}" alt="thumbnail" class="fakeimg center" >
-
-        <hr>
-
         <p class="sectionSubTag text-small">
             <i class="fa fa-user" aria-hidden="true">{{post.author}}</i>
             {% if post.published_date %}            
@@ -22,32 +16,33 @@
                 <i class="fa fa-calendar-times-o" aria-hidden="true">Unpublished</i></p>    
             {% endif %}            
         </p>
+        
+        <img src="https://source.unsplash.com/1400x450/?Statistics,mean" alt="thumbnail" class="fakeimg" >
 
-        <hr>
 
         <p class="sectionSubTag text-small">{{ post.text|safe }}</p> 
 
-        <hr>
-        
         {% if user.is_authenticated %}
             <p class="sectionTag text-smaller">
                 <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}" role="button">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
+            </p>
+            <p class="sectionTag text-smaller">
                 <a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}" role="button">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
-            
+            </p>
                 {% if post.published_date %}
                 {% else %}
                 
+                    <p class="sectionTag text-smaller"></p>
                         <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}" role="button">
                             <span class="glyphicon glyphicon-ok">Publsih</span>
                         </a>
-                    
+                    </p>
                 {% endif %}
-            </p>
-            <hr>
+            
         {% endif %}   
           
            
