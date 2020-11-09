@@ -28,11 +28,13 @@
                 </a>
             </p>
                 {% if post.published_date %}
-            <p class="sectionTag text-smaller"></p>
-                <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}" role="button">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
-            </p>
+                {% else %}
+                
+                    <p class="sectionTag text-smaller"></p>
+                        <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}" role="button">
+                            <span class="glyphicon glyphicon-ok">Publsih</span>
+                        </a>
+                    </p>
                 {% endif %}
             
         {% endif %}   
