@@ -27,7 +27,7 @@ urlpatterns = [
     #url(r'^accounts/logout/$',views.logout,name='logout',kwargs={'next_page':'/'}),
     path("accounts/login/", views.LoginView.as_view(template_name="registration/login.html"),name="login"),
     path("accounts/logout/", views.LogoutView.as_view(template_name="registration/logout.html"),name="logout"),
- 
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 if settings.DEBUG is True:
