@@ -8,7 +8,7 @@
         <p class="sectionSubTag text-smaller">
             <i class="fa fa-user" aria-hidden="true">{{post.author}}</i>
             {% if post.published_date %}            
-                <i class="fa fa-calendar-times-o" aria-hidden="true">{{ post.published|date:"D M Y" }}</i></p>
+                <i class="fa fa-calendar-o" aria-hidden="true">{{ post.published_date}}</i></p>
             {% else %}
                 <i class="fa fa-calendar-times-o" aria-hidden="true">Unpublished</i></p>    
             {% endif %}            
@@ -43,32 +43,57 @@
     </div>
 </section>
 
-<section class="contact" id="contact">
-    <h1 class="text-center">Comments</h1>
-    <div class="form">
-
-        <p class="sectionTag text-small"><a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary">Add Comment</a></p>
-
-        {% for comment in post.comments.all %}
-            {% if user.is_authenticated or comment.approved_comment %}
-                {{ comment.create_date }}
-                {% if not comment.approved_comment %}
-                <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}" role="button">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </a>
-                <a class="btn btn-success" href="{% url 'commnet_approve' pk=comment.pk %}" role="button">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </a>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="page-header">Comments</h2>
+          <section class="comment-list">
+            
+            {% for comment in post.comments.all %}
+                {% if user.is_authenticated or comment.approve_comment %}
+                    <article class="row">
+                    <div class="col-md-2 col-sm-2 hidden-xs">
+                        <figure class="thumbnail">
+                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                        </figure>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="panel panel-default arrow left">
+                            <div class="panel-body">
+                                <header class="text-left">
+                                <div class="comment-user"><i class="fa fa-user"></i> {{ comment.author }}</div>
+                                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ comment.create_date }}</time>
+                                </header>
+                                <div class="comment-post">
+                                <p>
+                                    {{ comment.text|safe|linebreaksbr }}
+                                </p>
+                                </div>
+                                {% if user.is_authenticated%}                                
+                                    <p class="text-right">
+                                        <a href="{% url 'comment_remove' pk=comment.pk %}" class="btn btn-default btn-sm">
+                                            <i class="fa fa-times"></i> Remove
+                                        </a>
+                                        {% if not comment.approve_comment %}
+                                            <a href="{% url 'comment_approve' pk=comment.pk %}" class="btn btn-default btn-sm">
+                                                <i class="fa fa-check"></i> Approve
+                                            </a>
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    </article>                       
+                
                 {% endif %}
+                {% empty %}
 
-                <p class="sectionTag text-small">{{ comment.text|safe|linebreaksbr }}</p>
-                <p class="sectionTag text-smaller">{{ comment.author }}</p>               
-
-            {% endif %}
-            {% empty %}
-            <p class="sectionTag text-small">No Comments</p>
             {% endfor %}
+          </section>
+      </div>
     </div>
-</section>
+  </div>
 
 {% endblock %}
+

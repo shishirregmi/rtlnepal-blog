@@ -35,7 +35,7 @@ class Comment(models.Model):
     approve_comment = models.BooleanField(default=False)
 
     def approve(self):
-        self.approved_comment = True
+        self.approve_comment = True
         self.save()
 
     def get_absolute_url(self):

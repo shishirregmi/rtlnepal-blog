@@ -25,7 +25,7 @@
     <div class="paras">
         <p class="text-bigger"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
         <p class="text-smaller"><i class="fa fa-user" aria-hidden="true"> {{post.author}}   </i>
-            <i class="fa fa-calendar-o" aria-hidden="true"> {{ post.published|date:"D M Y" }} </i>
+            <i class="fa fa-calendar-o" aria-hidden="true"> {{ post.published_date }} </i>
             </p>
         <img src="https://source.unsplash.com/1400x450/?Statistics,mean" alt="thumbnail" class="fakeimg" >
         <p class="sectionSubTag text-small">{{ post.text|safe|slice:":555" }}...
