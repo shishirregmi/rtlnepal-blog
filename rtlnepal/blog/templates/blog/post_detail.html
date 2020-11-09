@@ -1,0 +1,72 @@
+{% extends "blog/base.html" %}
+
+{% block body_block %}
+
+<section class="section section-left" id="about">
+    <div class="paras">
+        <p class="sectionTag text-bigger">{{ post.title }}</p>
+        <p class="sectionSubTag text-smaller">
+            <i class="fa fa-user" aria-hidden="true">{{post.author}}</i>
+            {% if post.published_date %}            
+                <i class="fa fa-calendar-times-o" aria-hidden="true">{{ post.published|date:"D M Y" }}</i></p>
+            {% else %}
+                <i class="fa fa-calendar-times-o" aria-hidden="true">Unpublished</i></p>    
+            {% endif %}            
+        </p>
+        <img src="https://source.unsplash.com/1400x450/?Statistics,mean" alt="thumbnail" class="fakeimg" >
+        <p class="sectionSubTag text-small">{{ post.text|safe }}</p> 
+
+        {% if user.is_authenticated %}
+            <p class="sectionTag text-smaller">
+                <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}" role="button">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </p>
+            <p class="sectionTag text-smaller">
+                <a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}" role="button">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </p>
+                {% if post.published_date %}
+            <p class="sectionTag text-smaller"></p>
+                <a class="btn btn-success" href="{% url 'post_publish' pk=post.pk %}" role="button">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+                {% endif %}
+            
+        {% endif %}   
+          
+           
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h1 class="text-center">Comments</h1>
+    <div class="form">
+
+        <p class="sectionTag text-small"><a href="{% url 'add_comment_to_post' pk=post.pk %}" class="btn btn-primary">Add Comment</a></p>
+
+        {% for comment in post.comments.all %}
+            {% if user.is_authenticated or comment.approved_comment %}
+                {{ comment.create_date }}
+                {% if not comment.approved_comment %}
+                <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}" role="button">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+                <a class="btn btn-success" href="{% url 'commnet_approve' pk=comment.pk %}" role="button">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+                {% endif %}
+
+                <p class="sectionTag text-small">{{ comment.text|safe|linebreaksbr }}</p>
+                <p class="sectionTag text-smaller">{{ comment.author }}</p>               
+
+            {% endif %}
+            {% empty %}
+            <p class="sectionTag text-small">No Comments</p>
+            {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

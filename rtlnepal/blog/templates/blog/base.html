@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {# MEDIUM STYLE EDITOR#}
+    <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <title>Shishir Regmi</title>
+</head>
+
+<body>
+    <nav class="navbar background h-nav-resp">
+        <ul class="nav-list v-class-resp">
+            <div class="logo big-logo"><a href="{% url 'post_list' %}">Shishir Regmi</a></div>
+            <li><a href="{% url 'post_list' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="rightNav v-class-resp">
+            {% if user.is_authenticated %}
+
+            <ul class="nav-list v-class-resp">
+                <li><a href="{% url 'post_new' %}">New</a></li>
+                <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+
+            {% endif %}
+        </div>
+        <div class="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    {% block body_block %}
+
+    {% endblock %}
+
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright &copy; 2020 - Shihsir Regmi - All rights reserved
+        </p>
+    </footer>
+    <script src="{% static '.js/resp.js' %}"></script>
+    <script src="{% static '.js/pagination.js' %}"></script>
+
 </body>
+
 </html>
