@@ -1,5 +1,7 @@
 
 @media only screen and (max-width: 1140px){
+    
+
     .nav-list{
         flex-direction: column;
     }
@@ -36,6 +38,10 @@
     .v-class-resp{
         opacity: 0;
     }
+    
+    .post-content{
+        zoom: 40%;
+    }
 
     .fakeimg {
         width: 100%;
@@ -46,7 +52,9 @@
 
     .section{
         flex-direction: column-reverse;
+        
     }
+    
     .text-small{
         text-align: center;
     }
