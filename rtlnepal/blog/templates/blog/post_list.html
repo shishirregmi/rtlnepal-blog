@@ -19,12 +19,12 @@
       <p class="sectionTag text-big">My Blogs</p>
     </div>
 </section>
-
+<hr>
 {% for post in post_list %}
 <section class="section">
     <div class="paras">
         <p class="text-big"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
-        <img src="https://source.unsplash.com/1400x450/?motherboard,cpu" alt="thumbnail" class="fakeimg" >
+        <img src="#" alt="thumbnail" class="fakeimg center" >
         
         <p class="text-smaller">
             <i class="fa fa-user" aria-hidden="true"> {{post.author}}    </i>

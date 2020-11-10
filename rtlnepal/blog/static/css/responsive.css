@@ -4,7 +4,7 @@
         flex-direction: column;
     }
     .navbar{
-        height: 460px;
+        height: 200px;
         flex-direction: column;
         transition: all 0.7s ease-out;
     }
@@ -36,6 +36,14 @@
     .v-class-resp{
         opacity: 0;
     }
+
+    .fakeimg {
+        width: 100%;
+        padding: 20px;
+        height: auto;
+        width: 300px;
+      }
+
     .section{
         flex-direction: column-reverse;
     }
@@ -55,5 +63,6 @@
     }
     .paras {
     padding: 0px;
+    width: auto;
 }
 }

@@ -17,6 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates/blog')
 MEDIA_DIR= os.path.join(BASE_DIR,"blog/media/images")
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -25,9 +26,9 @@ MEDIA_DIR= os.path.join(BASE_DIR,"blog/media/images")
 SECRET_KEY = '%62gqih$@m(thnbnqam0a-)1tigk2#3+omxw3tuo%h-x_%(%om'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shishirregmi.pythonanywhere.com']
 
 
 # Application definition
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    
+
 ]
 
 MIDDLEWARE = [

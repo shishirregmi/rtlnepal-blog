@@ -3,13 +3,13 @@
 {% block body_block %}
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<section class="section section-left" id="about">
+<section class="section section-left center" id="about">
     <div class="paras">
         <p class="sectionTag text-bigger">{{ post.title }}</p>
         
 
         
-        
+        {{ post.image.url }}
         <img src="{{ post.image.url }}" alt="thumbnail" class="fakeimg center" >
 
         <hr>
